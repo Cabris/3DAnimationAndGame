@@ -323,10 +323,10 @@ ModelImporter:
     4300102: ventilator.6
     4300104: block7.1
     4300106: balkony7
-    11100000: //RootNode
+    9500000: //RootNode
   materials:
     importMaterials: 1
-    materialName: 3
+    materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
@@ -374,5 +374,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   additionalBone: 1
-  animationType: 1
+  animationType: 2
   userData: 

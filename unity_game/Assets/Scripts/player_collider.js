@@ -31,9 +31,6 @@ function OnTriggerEnter(collision : Collider)
 		mcdonald = true;
 		Debug.Log("m true");
 	}
-		
-		
-	
 	
 }
 

@@ -5,6 +5,11 @@ using System.Collections.Generic;
 public class PlayerPath : MonoBehaviour
 {
 	//[SerializeField]
+	
+	public delegate void PathAdded(Vector3 pos);
+	public PathAdded OnPathAdded;
+	
+	
 	bool isMove;
 	Vector3 prePos;
 	[SerializeField] 
@@ -34,6 +39,8 @@ public class PlayerPath : MonoBehaviour
 			count += Time.deltaTime;
 			if (count >= period) {
 				path.Add (transform.position);
+				if(OnPathAdded!=null)
+					OnPathAdded(transform.position);
 				count=0;
 			}
 		}else{
@@ -46,4 +53,8 @@ public class PlayerPath : MonoBehaviour
 		return transform.position.x == prePos.x &&
 			transform.position.z == prePos.z;
 	}
+
+	
 }
+
+

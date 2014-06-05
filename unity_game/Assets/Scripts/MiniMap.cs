@@ -4,7 +4,7 @@ using System;
 
 public class MiniMap : MonoBehaviour
 {
-	
+	public bool isFinished;
 	bool opened;
 	public UILabel guiText;
 	public GameObject mapEle_base_prefab;
@@ -16,7 +16,7 @@ public class MiniMap : MonoBehaviour
 	public GameObject playerPos_prefab;
 	Renderer[] mapRenderers;
 	public float size;
-	double  countTime = 0;
+	public double  countTime = 0;
 	public Transform player;
 	GameObject playerPos;
 	float w;
@@ -29,6 +29,7 @@ public class MiniMap : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		isFinished=false;
 		isOpen = false;
 		path=player.GetComponent<PlayerPath>();
 		path.OnPathAdded+=onPathAdded;
@@ -52,7 +53,7 @@ public class MiniMap : MonoBehaviour
 				createMapEle (mapEle_base_prefab, elePos, new Vector3 (size, size * 0.05f, size));
 			
 				int type = mapData [i, j];
-				int _i = mapH - i;
+				int _i = mapH - i-1;
 				elePos = new Vector3 ((-w / 2) + j * size * 1.07f, size * 1.07f / 2f, (-h / 2) + _i * size * 1.07f);
 				switch (type) {
 				case 0://wall
@@ -98,7 +99,7 @@ public class MiniMap : MonoBehaviour
 			foreach (Renderer r in mapRenderers)
 				r.enabled = isOpen;
 			//playerPos.renderer.enabled = isOpen;
-			if (isOpen) {
+			if (isOpen&&!isFinished) {
 				countTime += Time.deltaTime;
 			}
 			

@@ -21,8 +21,16 @@ public class HUDController : MonoBehaviour
 			isOpenMap=!isOpenMap;
 		//	cMotor.canControl = !map.isOpen;
 		//	mLook.canControl= !map.isOpen;
+			
 		}
-		map.isOpen = isOpenMap;
-		
+		if(map.isFinished)
+		{
+			map.isOpen=true;
+			cMotor.canControl = false;
+			mLook.canControl= true;
+		}
+		else{
+			map.isOpen = isOpenMap;
+		}
 	}
 }
